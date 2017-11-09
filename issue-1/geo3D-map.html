@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body{
+			background: #162557;
+		}
+		#d3map{
+			width: 1400px;
+			height: 900px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="d3map"></div>
+
+	<script src="./libs/echarts-3.5.3.min.js"></script>
+	<script src="./libs/echarts-gl-1.0.0-alpha.5.min.js"></script>
+	<script src="../map/china.js"></script>
+	<script>
+
+		var myChart = echarts.init(document.getElementById('d3map'));
+		var option = {
+			geo3D: {
+		        map: 'china',
+		        type: "map3D",
+		        boxHeight: 1.5,
+		        boxWidth: 123,
+		        boxDepth: 80,
+		        itemStyle: {
+		          areaColor: 'rgba(17,100,163,0.2)', //#1164a3 正常 ;'rgba(17,100,163,0.2)',报错
+		          borderWidth: 2,
+		          borderColor: '#0ff'
+		        },
+		        label: {
+		          show: true,
+		          textStyle: {
+		            color: '#fff', //地图初始化区域字体颜色
+		            borderWidth: 0,
+		            fontSize: 28,
+		            fontWeight: 100
+		          },
+		        },
+		        emphasis: { //当鼠标放上去  地区区域是否显示名称
+		          label: {
+		            show: true
+		          },
+		          itemStyle: {
+		            areaColor: 'rgba(17,100,163,0.6)',
+		          }
+		        },
+		        shading: 'lambert',
+		        light: { //光照阴影
+		          main: {
+		            color: '#fff', //光照颜色
+		            intensity: 2, //光照强度
+		            shadowQuality: 'high', //阴影亮度
+		            //             shadow: true, //是否显示阴影
+		          }
+		        }
+		      }
+		};
+		myChart.setOption(option);
+		
+	</script>
+</body>
+</html>
